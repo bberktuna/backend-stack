@@ -11,6 +11,8 @@ import cors from "cors"
 import { LoginResolver } from "./modules/user/Login"
 import { RegisterResolver } from "./modules/user/Register"
 import { MeResolver } from "./modules/user/Me"
+import { ConfirmUserResolver } from "./modules/user/ConfirmUser"
+
 
 
 const main = async () => {
@@ -20,7 +22,8 @@ const main = async () => {
         resolvers: [
             RegisterResolver,
             LoginResolver,
-            MeResolver
+            MeResolver,
+            ConfirmUserResolver
         ],
         authChecker: ({ context: {req} }) => {
             return !!req.session.userId
@@ -64,6 +67,8 @@ const main = async () => {
 
     app.listen(4000, () => {
         console.log("server started on local host 4000")
+        
+
     })
 }
 

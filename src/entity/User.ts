@@ -31,5 +31,7 @@ export class User extends BaseEntity{
     @Column()
     password: string;
 
+    @Column("bool", {default: false})// only database field dont show on query
+    confirmed: boolean;
 
 }

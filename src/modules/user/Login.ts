@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs"
 import { MyContext } from "../../types/MyContext"
 
 
+
 @Resolver()
 export class LoginResolver {
 
@@ -26,6 +27,10 @@ export class LoginResolver {
             const valid = await bcrypt.compare(password, user.password)
 
             if(!valid) {
+                return null
+            }
+
+            if(!user.confirmed) {
                 return null
             }
             
