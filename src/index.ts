@@ -1,3 +1,4 @@
+//import { graphqlUploadExpress } from "graphql-upload"
 import { ApolloServer } from "apollo-server-express"
 import Express from "express"
 import "reflect-metadata"
@@ -17,6 +18,7 @@ const main = async () => {
     const apolloServer = new ApolloServer({
         schema,
         context: ({ req, res }: any) => ({ req, res }),
+        uploads: false
         
     })
 
@@ -46,6 +48,8 @@ const main = async () => {
             },
         })
     )
+
+    //app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
     apolloServer.applyMiddleware({app})
 
